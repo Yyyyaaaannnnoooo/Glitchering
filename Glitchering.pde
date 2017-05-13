@@ -12,7 +12,7 @@ void settings() {
   //img  = createImage(600, 600, RGB);
   //img = randomGradient();
   img3 = createImage(img.width, img.height, RGB);
-  size(img.width, img.height + textHeight, JAVA2D);
+  size(img.width, img.height, JAVA2D);
 }
 void setup() {
   win = new PWindow();
@@ -21,7 +21,7 @@ void setup() {
 }
 
 void draw() {
-  dither(img, fac, level);
+  dither(img, win.factor, win.level);
 }
 
 void keyPressed() {
@@ -75,7 +75,7 @@ void dither(PImage src1, float factor, int lev) {
   }
   src.updatePixels();
   //image(src1, 0, 0);
-  image(src, 0, textHeight);
+  image(src, 0, 0);
 }
 
 PImage randomGradient() {
