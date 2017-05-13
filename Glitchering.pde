@@ -1,25 +1,26 @@
-
+/////GLICHERING//////
+//ARROW UP AND DOWN TO CHANGE THE DITHERING FACTOR
+//ARROW LEFT AND RIGHT TO CHANGE THE NUMBER OF COLORS IN THE IMAGE
+//USE KEY S TO SAVE AN IMAGE
+PWindow win;
 PImage img, img2, img3;
 int level = 1, count = 0;
 float num = 0, fac = 16;
 int textHeight = 17;
 void settings() {
-  img  = loadImage("vernazza.jpg");  //Use images that aren't wider than half of your screen, If you want to see the live animation...
+  img  = loadImage("1.jpg");//upload your image here
   //img  = createImage(600, 600, RGB);
   //img = randomGradient();
   img3 = createImage(img.width, img.height, RGB);
   size(img.width, img.height + textHeight, JAVA2D);
 }
 void setup() {
+  win = new PWindow();
   noStroke();
   noSmooth();
 }
 
 void draw() {
-  fill(0);
-  rect(0, 0, width, textHeight);
-  fill(255);
-  text("DITHER FACTOR: "+fac+" LEVEL: "+level+" // UP AND DOWN TO CHANGE FACTOR, LEFT AND RIGHT TO CHANGE LEVEL", 0, 0, width, textHeight);
   dither(img, fac, level);
 }
 
@@ -27,7 +28,7 @@ void keyPressed() {
   switch(key) {
     case('g'):
     img = randomGradient();
-    case('s'):
+    case('s'): 
     String date = new java.text.SimpleDateFormat("yyyy_MM_dd_kkmmss").format(new java.util.Date ());
     saveFrame("dithering"+date+".jpg");
     case(CODED):
